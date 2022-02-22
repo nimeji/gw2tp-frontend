@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ReactKeycloakProvider} from "@react-keycloak/web";
+import keycloak from "./keycloak";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <ReactKeycloakProvider authClient={keycloak} initOptions={{onLoad: 'check-sso'}}>
+        <App />
+      </ReactKeycloakProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
